@@ -12,12 +12,23 @@ function App() {
     { title: "Include Numbers", state: false },
     { title: "Include Symbols", state: false },
   ])
+  const [copied, setCopied] = useState(false);
 
   const handleCheckBox = (i) => {
     const updateCheckBox = [...checkboxs];
     updateCheckBox[i].state = !updateCheckBox[i].state
     setCheckboxs(updateCheckBox);
 
+  }
+
+  const handleCopyText = () => {
+    navigator.clipboard.writeText(password.value);
+    setCopied(true);
+    // console.log(password);
+
+    setTimeout(() => {
+      setCopied(false);
+    }, 1000);
   }
 
   const {password, errorMessage, generatePassword} = usePasswordGenerator();
@@ -30,7 +41,12 @@ function App() {
         {/* password text and copy button */}
         {password && <div className="header">
           <div className='password__text'>{password}</div>
-          <button className='password__button'>COPY</button>
+          <button 
+          className='password__button'
+          onClick={() => handleCopyText()}
+          >
+            {copied ? "Copied" : "Copy"}
+          </button>
         </div>}
 
         {/* Character length */}
