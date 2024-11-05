@@ -24,7 +24,7 @@ function App() {
   const handleCopyText = () => {
     navigator.clipboard.writeText(password.value);
     setCopied(true);
-    // console.log(password);
+    console.log(password);
 
     setTimeout(() => {
       setCopied(false);
