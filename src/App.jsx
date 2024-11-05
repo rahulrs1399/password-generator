@@ -32,7 +32,7 @@ function App() {
   }
 
   const {password, errorMessage, generatePassword} = usePasswordGenerator();
-  // console.log(password);
+  console.log(password);
   // console.log(length);
 
   return (
